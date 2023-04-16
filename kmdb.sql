@@ -115,7 +115,7 @@ CREATE TABLE movies (
     title TEXT,
     year_released TEXT,
     MPAA_rating TEXT,
-    studio_id INTEGER,
+    studio_id INTEGER
 );
 
 CREATE TABLE actors (
@@ -226,7 +226,7 @@ VALUES (
 
 -- The SQL statement for the movies output
 SELECT movies.title, movies.year_released, movies.MPAA_rating, studios.name
-FROM movies INNER JOIN studios ON studio.id = movies.studio_id;
+FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
 
 -- Prints a header for the cast output
 .print ""
@@ -234,8 +234,7 @@ FROM movies INNER JOIN studios ON studio.id = movies.studio_id;
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
-SELECT movies.title, actors.name, characters.name
+SELECT movies.title, actors.name, characters.character_name
 FROM characters INNER JOIN actors ON actors.id = characters.actor_id
-INNER JOIN movies on movie.id = characters.movie_id; 
+INNER JOIN movies on movies.id = characters.movie_id; 
